@@ -27,7 +27,7 @@ body {
 .navbar {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #333;
+    border-bottom: 2px solid #333;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -39,32 +39,34 @@ body {
 .navbar .nav {
     display: flex;
     flex-direction: row;
-    display: flex;
     align-items: center;
     gap: .5rem;
     padding: .7rem 4rem;
     width: 100%;
+    /* background: green; */
 }
 
 .navbar .nav p {
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
 }
 
 .navbar .nav .search-container {
     display: flex;
     position: relative;
-    width: 100%;
+    width: 60%;
+    max-width: 90%;
     align-items: center;
     margin: 0 2rem;
 }
 
 .navbar .nav .search-container .search-input {
     font-size: 1.1rem;
-    padding: .9rem 3rem;
+    padding: .7rem 3rem;
     border-radius: .5rem;
-    width: 70%;
+    width: 100%;
+
     background: var(--bg-shades);
     border: 1px solid #777;
     color: var(--main-text-color);
@@ -95,8 +97,8 @@ body {
     position: absolute;
     display: flex;
     left: 1.3rem;
-    top: 50%;
-    transform: translateY(-50%);
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
     color: var(--main-text-color);
 }
 
@@ -108,6 +110,12 @@ body {
 
 .navbar .nav img {
     width: 2.4rem;
+}
+
+.navbar .nav #dark-light-mode {
+    position: absolute;
+    right: 1.2rem;
+    justify-self: right;
 }
 
 /* =========== END OF NAVBAR========== */
@@ -125,16 +133,58 @@ body {
 
 .main .main-content {
     color: white;
-    background: #222;
+    /* background: #222; */
     height: 100%;
 }
 
 .main .main-content .category {
     display: flex;
     flex-direction: column;
-    height: 15rem;
-    background: #333;
-    margin: 30px 0;
+    /* height: 17rem; */
+    /* background: #333; */
+    /* margin: 1rem 0; */
+    padding: 1rem;
+}
+
+.main .main-content .category h2 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.main .main-content .category .movies {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    column-gap: 30px;
+}
+
+.main .main-content .category .movies::-webkit-scrollbar {
+    display: none;
+}
+
+
+.main .main-content .category .movies .movieSum {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background: green; */
+    /* margin: 0 30px; */
+}
+
+.main .main-content .category .movies .movieSum img {
+    max-width: none;
+    height: 12.5rem;
+    margin-bottom: 10px;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+.main .main-content .category .movies .movieSum p {
+    /* overflow: hidden;
+    word-wrap: normal; */
+    font-size: .9rem;
 }
 
 /* ----------END OF MAIN DIV---------- */
