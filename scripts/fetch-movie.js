@@ -32,3 +32,10 @@ function main() {
 }
 
 document.addEventListener("DOMContentLoaded", main);
+
+// To make the main body to display
+function original() {
+  document.querySelector(".loader").style.display = "none";
+  document.querySelector(".body").style.display = "unset";
+}
+setTimeout(original, 5000);
