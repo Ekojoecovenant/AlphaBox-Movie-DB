@@ -25,6 +25,7 @@ body {
 
 .body {
     min-height: 100vh;
+
     background: var(--main-bg-color);
 }
 
@@ -221,4 +222,9 @@ PC X Big Tab
 1100px
 1300px
 1500px;
+*/
+
+/* TMDB
+https://www.themoviedb.org
+ "This product uses the TMDB API but is not endorsed or certified by TMDB."
 */
