@@ -375,6 +375,10 @@ body {
         width: 100%;
     }
 
+    .main .main-content .category {
+        padding: .3rem 1rem;
+    }
+
     .main .main-content .category h2 {
         font-size: .95rem;
         margin-bottom: .39rem;
