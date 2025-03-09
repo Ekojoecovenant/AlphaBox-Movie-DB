@@ -20,7 +20,7 @@ async function displayMovies(movies, moviesContainer) {
     // console.log("\nMovie Details:\n", movieDetails);
 
     moviesContainer.innerHTML += `
-            <div class=movieSum>
+            <div class="movieSum">
                 <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title}">
                 <p>${movie.title}</p>
             </div>

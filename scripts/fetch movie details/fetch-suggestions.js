@@ -1,55 +1,56 @@
-import { displayMovies, fetchData } from "./fetch-movies.js";
-import { displayTvs, fetchTvData } from "./fetch-tvs.js";
 import { shuffleArray } from "../random.js";
 
 const apiKey = "2d202e9510d7a1a79d7bc642da35995e";
 
-async function fetchSuggestions() {
-  // Fetch data from multiple endpoints
-  const trendingMovies = await fetchData(
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`
-  );
-  const popularMovies = await fetchData(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
-  );
-  const animeMovies = await fetchData(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=16`
-  ); // Anime
-  const dramaMovies = await fetchData(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=18`
-  ); // Drama (K-Drama)
-  const popularTvs = await fetchData(
-    `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`
-  );
-  const animeTvs = await fetchData(
-    `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_genres=16`
-  ); // Anime
+async function fetchData(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.results; // TMDB API returns results in a 'results' array
+}
 
-  // Combine results into a single array
-  const allMovies = [
-    // ...trendingMovies,
-    ...dramaMovies,
-    // ...popularTvs,
-    ...popularMovies,
-    ...animeMovies,
-  ];
-
-  // Remove duplicates using a Set
-  const uniqueMovies = [];
-  const movieIds = new Set(); // Track movie IDs to avoid duplicates
-
-  for (const movie of allMovies) {
-    if (!movieIds.has(movie.id)) {
-      uniqueMovies.push(movie);
-      movieIds.add(movie.id);
-    }
+async function displayContent(content, contentContainer) {
+  contentContainer.innerHTML = ""; // Add category heading
+  for (const item of content) {
+    contentContainer.innerHTML += `
+          <div class=movieSum>
+            <img src="https://image.tmdb.org/t/p/w200${item.poster_path}" id="${
+      item.id
+    }" alt="${item.title || item.name}">
+            <p>${item.title || item.name} (${
+      item.media_type === "movie" ? "Movie" : "TV Show"
+    })</p>
+          </div>`;
   }
+}
 
-  // Shuffle the unique movies array to mix the results
-  const shuffledSuggestions = shuffleArray(uniqueMovies).slice(0, 20); // Display 20 unique movies
+async function fetchSuggestions() {
+  // Fetch movies of the specified genre
+  const movies = await fetchData(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}`
+  );
+  // Fetch TV shows of the specified genre
+  const tvShows = await fetchData(
+    `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}`
+  );
 
-  // Display the suggestions
-  displayMovies(shuffledSuggestions, document.querySelector(".suggestions"));
+  // Add a `media_type` field to distinguish between movies and TV shows
+  const moviesWithType = movies.map((movie) => ({
+    ...movie,
+    media_type: "movie",
+  }));
+  const tvShowsWithType = tvShows.map((tv) => ({ ...tv, media_type: "tv" }));
+
+  // Combine movies and TV shows into a single array
+  const combinedContent = [...moviesWithType, ...tvShowsWithType];
+
+  // Shuffle the combined array to mix movies and TV shows
+  const shuffledContent = shuffleArray(combinedContent);
+
+  // Display the combined content
+  await displayContent(
+    shuffledContent.slice(0, 20),
+    document.querySelector(".suggestions")
+  ); // Display top 8 results
 }
 
 export { fetchSuggestions };
