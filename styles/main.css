@@ -406,47 +406,6 @@ body {
 }
 
 
-/* For 500px */
-@media screen and (max-width: 500px) {
-
-    /* Navigation pane */
-    .navbar .nav {
-        padding: .5rem 1rem;
-        justify-content: space-between;
-    }
-
-    .navbar .nav p {
-        font-size: .8rem;
-    }
-
-    .navbar .nav .search-container .search-input {
-        font-size: .7rem;
-    }
-
-    .navbar .nav img {
-        width: 1.5rem;
-    }
-
-    /* .main div */
-    .main .main-content .category h2 {
-        font-size: .7rem;
-    }
-
-    .main .main-content .category .movies .movieSum img {
-        height: 5.5rem;
-        margin-bottom: 3px;
-    }
-
-    .main .main-content .category .movies .movieSum p {
-        font-size: .5rem;
-    }
-
-    /* footer */
-    .footer {
-        font-size: .6rem;
-    }
-}
-
 /* Media Query widths */
 /* 
 Mobile
