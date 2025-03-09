@@ -202,8 +202,6 @@ body {
 }
 
 .main .main-content .category .movies .movieSum p {
-    /* overflow: hidden;
-    word-wrap: normal; */
     font-size: .9rem;
 }
 
@@ -282,12 +280,178 @@ body {
 
 
 
+/* ---------MEDIA QUERIES--------- */
+/* For 1300px */
+@media screen and (max-width: 1300px) {
+    .main .main-content .category .movies .movieSum img {
+        height: 11rem;
+    }
+}
 
+/* For 1100px */
+@media screen and (max-width: 1100px) {
+
+    /* Navigation pane */
+    .navbar .nav p {
+        font-size: 1.2rem;
+    }
+
+    .navbar .nav .search-container .search-input {
+        font-size: 1rem;
+    }
+
+    .navbar .nav img {
+        width: 2.4rem;
+    }
+
+    /* .main div */
+    .main .main-content .category h2 {
+        font-size: 1.2rem;
+    }
+
+    .main .main-content .category .movies {
+        column-gap: 20px;
+    }
+
+    .main .main-content .category .movies .movieSum img {
+        height: 9rem;
+    }
+
+    .main .main-content .category .movies .movieSum p {
+        font-size: .8rem;
+    }
+
+    /* footer */
+    .footer {
+        font-size: .8rem;
+    }
+}
+
+/* For 768px */
+@media screen and (max-width: 768px) {
+    .main .main-content .category .movies .movieSum img {
+        height: 8rem;
+    }
+}
+
+/* For 720px */
+@media screen and (max-width: 720px) {
+
+    /* Navigation pane */
+    .navbar .nav {
+        padding: .5rem 1.2rem;
+        justify-content: space-between;
+    }
+
+    .navbar .nav p {
+        font-size: 1rem;
+    }
+
+    .navbar .nav .search-container {
+        width: 100%;
+        max-width: unset;
+        margin: unset;
+    }
+
+    .navbar .nav .search-container .search-input {
+        font-size: .8rem;
+        padding: .5rem 1.5rem;
+    }
+
+    .navbar .nav .search-container .search-icon {
+        left: .4rem;
+    }
+
+    .navbar .nav .search-container .search-icon svg {
+        width: .9rem;
+    }
+
+    .navbar .nav img {
+        width: 2rem;
+    }
+
+    .navbar .nav #dark-light-mode {
+        position: unset;
+        justify-self: unset;
+        right: unset;
+    }
+
+    /* .main div */
+    .main .main-content {
+        width: 100%;
+    }
+
+    .main .main-content .category h2 {
+        font-size: .8rem;
+        margin-bottom: .3rem;
+    }
+
+    .main .main-content .category .movies {
+        column-gap: 15px;
+    }
+
+    .main .main-content .category .movies .movieSum img {
+        height: 6rem;
+        margin-bottom: 6px;
+    }
+
+    .main .main-content .category .movies .movieSum p {
+        font-size: .6rem;
+    }
+
+    /* footer */
+    .footer {
+        font-size: .7rem;
+    }
+}
+
+
+/* For 500px */
+@media screen and (max-width: 500px) {
+
+    /* Navigation pane */
+    .navbar .nav {
+        padding: .5rem 1rem;
+        justify-content: space-between;
+    }
+
+    .navbar .nav p {
+        font-size: .8rem;
+    }
+
+    .navbar .nav .search-container .search-input {
+        font-size: .7rem;
+    }
+
+    .navbar .nav img {
+        width: 1.5rem;
+    }
+
+    /* .main div */
+    .main .main-content .category h2 {
+        font-size: .7rem;
+    }
+
+    .main .main-content .category .movies .movieSum img {
+        height: 5.5rem;
+        margin-bottom: 3px;
+    }
+
+    .main .main-content .category .movies .movieSum p {
+        font-size: .5rem;
+    }
+
+    /* footer */
+    .footer {
+        font-size: .6rem;
+    }
+}
 
 /* Media Query widths */
 /* 
 Mobile
 720px
+768
 
 PC X Big Tab
 1100px
