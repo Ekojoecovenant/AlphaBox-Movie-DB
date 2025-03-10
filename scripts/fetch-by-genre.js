@@ -1,27 +1,19 @@
 import { shuffleArray } from "./random.js";
+import { filterImages } from "./filter-image.js";
 
 const apiKey = "2d202e9510d7a1a79d7bc642da35995e";
 
 async function fetchData(url) {
   const response = await fetch(url);
   const data = await response.json();
-  return data.results; // TMDB API returns results in a 'results' array
-}
-
-async function fetchDetails(id, type) {
-  const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
+  return data.results;
 }
 
 async function displayContent(content, contentContainer) {
-  contentContainer.innerHTML = ""; // Add category heading
+  contentContainer.innerHTML = "";
   for (const item of content) {
-    // const details = await fetchDetails(item.id, item.media_type); // Fetch additional details
-
     contentContainer.innerHTML += `
-          <div class=movieSum>
+          <div class='movieSum'>
             <img src="https://image.tmdb.org/t/p/w200${item.poster_path}" id="${
       item.id
     }" alt="${item.title || item.name}">
@@ -29,22 +21,20 @@ async function displayContent(content, contentContainer) {
       item.media_type === "movie" ? "Movie" : "TV Show"
     })</p>
           </div>`;
-
-    // moviesContainer.appendChild(itemElement);
   }
 }
 
 async function fetchGenreContent(genreId, contentContainer) {
-  // Fetch movies of the specified genre
+  // to fetchthe movies of a particular genre
   const movies = await fetchData(
     `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}&sort_by=vote_average.desc`
   );
-  // Fetch TV shows of the specified genre
+  // to fetch the  TV shows of a particular genre
   const tvShows = await fetchData(
     `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_genres=${genreId}&sort_by=vote_average.desc`
   );
 
-  // Add a `media_type` field to distinguish between movies and TV shows
+  // adding a `media_type` key to the each object to differenciate between movies and TV shows
   const moviesWithType = movies.map((movie) => ({
     ...movie,
     media_type: "movie",
@@ -57,8 +47,11 @@ async function fetchGenreContent(genreId, contentContainer) {
   // Shuffle the combined array to mix movies and TV shows
   const shuffledContent = shuffleArray(combinedContent);
 
+  // Filter the array to remove content with broken images
+  const filteredContent = filterImages(shuffledContent);
+
   // Display the combined content
-  await displayContent(shuffledContent.slice(0, 20), contentContainer); // Display top 8 results
+  await displayContent(filteredContent.slice(0, 20), contentContainer); // Display top 8 results
 }
 
 async function fetchGenreContent2(genreId, contentContainer, language) {
@@ -82,8 +75,11 @@ async function fetchGenreContent2(genreId, contentContainer, language) {
   // Shuffle the combined array to mix movies and TV shows
   const shuffledContent = shuffleArray(combinedContent);
 
+  // Filter the array to remove content with broken images
+  const filteredContent = filterImages(shuffledContent);
+
   // Display the combined content
-  await displayContent(shuffledContent.slice(0, 20), contentContainer); // Display top 8 results
+  await displayContent(filteredContent.slice(0, 20), contentContainer); // Display top 8 results
 }
 
 async function fetchGenreContent3(movieId, tvId, contentContainer) {
@@ -109,8 +105,11 @@ async function fetchGenreContent3(movieId, tvId, contentContainer) {
   // Shuffle the combined array to mix movies and TV shows
   const shuffledContent = shuffleArray(combinedContent);
 
+  // Filter the array to remove content with broken images
+  const filteredContent = filterImages(shuffledContent);
+
   // Display the combined content
-  await displayContent(shuffledContent.slice(0, 20), contentContainer); // Display top 8 results
+  await displayContent(filteredContent.slice(0, 20), contentContainer); // Display top 8 results
 }
 
 export {
