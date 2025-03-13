@@ -13,6 +13,7 @@ toggleBtn.addEventListener("click", function () {
     );
     document.documentElement.style.setProperty("--searchBorder-color", "#ccc");
     document.documentElement.style.setProperty("--title-color", "black");
+    document.documentElement.style.setProperty("--details-shade", "#fff");
     toggleBtn.src = "./media/Icons/light-mode.png";
   } else {
     document.documentElement.style.setProperty("--main-bg-color", "#111");
@@ -24,6 +25,7 @@ toggleBtn.addEventListener("click", function () {
     );
     document.documentElement.style.setProperty("--searchBorder-color", "#777");
     document.documentElement.style.setProperty("--title-color", "#fff");
+    document.documentElement.style.setProperty("--details-shade", "#222");
     toggleBtn.src = "./media/Icons/dark-mode.png";
   }
 

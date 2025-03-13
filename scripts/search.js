@@ -1,4 +1,5 @@
 import { filterImages } from "./filter-image.js";
+import { getContentTrailers } from "./details.js";
 
 const apiKey = "2d202e9510d7a1a79d7bc642da35995e";
 
@@ -7,6 +8,7 @@ const searchBtn = document.querySelector(".search-icon"); // For the search butt
 // The Divs holding the display items
 const mainDiv = document.querySelector(".main");
 const searchDiv = document.querySelector(".search");
+const detailsDiv = document.querySelector(".details");
 const resultDiv = document.getElementById("searchDiv");
 
 // the function to get the searched content and return the match
@@ -31,13 +33,27 @@ function displaySearch(result) {
   for (const item of result) {
     resultDiv.innerHTML += `
     <div class='movieSum'>
-            <img src="https://image.tmdb.org/t/p/w200${item.poster_path}" id="${
-      item.id
+            <img src="https://image.tmdb.org/t/p/w200${
+              item.poster_path
+            }" class="contentImg" data-my-id="${item.id}" data-my-type="${
+      item.media_type
     }" alt="${item.title || item.name}">
             <p>${item.title || item.name} (${
       item.media_type === "movie" ? "Movie" : "TV Show"
     })</p>
           </div>`;
+  }
+  const IMG = document.querySelectorAll(".contentImg");
+  console.log("Reached here 1");
+  for (const img of IMG) {
+    const id = img.getAttribute("data-my-id");
+    const type = img.getAttribute("data-my-type");
+    console.log("Reached here 2");
+
+    img.style.cursor = "pointer";
+    img.addEventListener("click", function () {
+      getContentTrailers(id, type);
+    });
   }
 }
 
@@ -85,7 +101,7 @@ async function search() {
   // Display the combined content
   await displaySearch(filteredContent);
 
-  setTimeout(display, 700);
+  setTimeout(display, 1000);
 }
 
 searchBtn.addEventListener("click", search);
@@ -93,11 +109,13 @@ searchBtn.addEventListener("click", search);
 function mainD() {
   mainDiv.style.display = "flex";
   searchDiv.style.display = "none";
+  detailsDiv.style.display = "none";
 }
 
 function searchD() {
   mainDiv.style.display = "none";
   searchDiv.style.display = "flex";
+  detailsDiv.style.display = "none";
 }
 
 function display() {

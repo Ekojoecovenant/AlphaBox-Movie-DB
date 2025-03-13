@@ -1,5 +1,5 @@
 // Back to the home page from the search page using the home button
-function backHomeFromSearch() {
+function goBackHome() {
   hide();
   mainD();
   setTimeout(display, 300);
@@ -8,6 +8,7 @@ function backHomeFromSearch() {
 function mainD() {
   document.querySelector(".main").style.display = "flex";
   document.querySelector(".search").style.display = "none";
+  document.querySelector(".details").style.display = "none";
 }
 
 function display() {
@@ -22,7 +23,7 @@ function hide() {
 
 // onload to declare the essential variables
 document.addEventListener("DOMContentLoaded", function () {
-  const searchToHomeBtn = document.getElementById("searchToHomeBtn");
+  const backHomeBtn = document.getElementById("backHomeBtn");
 
-  searchToHomeBtn.addEventListener("click", backHomeFromSearch);
+  backHomeBtn.addEventListener("click", goBackHome);
 });

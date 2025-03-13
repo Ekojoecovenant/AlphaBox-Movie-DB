@@ -1,0 +1,565 @@
+:root {
+    --main-bg-color: #111;
+    --bg-shades: #444;
+    --main-text-color: #aaa;
+    --searchBorder-focus-color: white;
+    --searchBorder-color: #777;
+    --title-color: white;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+
+body {
+    background: #222;
+}
+
+.body {
+    /* min-height: 100vh; */
+
+    display: none;
+
+    background: var(--main-bg-color);
+}
+
+/* --------------STYLING THE NAVIGATION PANE-------------- */
+.navbar {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--main-bg-color);
+    /* gap: 20px; */
+    width: 100%;
+}
+
+.navbar .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+    padding: .7rem 4rem;
+    width: 100%;
+    /* background: green; */
+}
+
+.navbar .nav p {
+    color: var(--title-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.navbar .nav .search-container {
+    display: flex;
+    position: relative;
+    width: 60%;
+    max-width: 90%;
+    align-items: center;
+    margin: 0 2rem;
+}
+
+.navbar .nav .search-container .search-input {
+    font-size: 1.1rem;
+    padding: .7rem 3rem;
+    border-radius: .5rem;
+    width: 100%;
+
+    background: var(--bg-shades);
+    border: 1px solid var(--searchBorder-color);
+    color: var(--main-text-color);
+}
+
+.navbar .nav .search-container .search-input::placeholder {
+    color: var(--main-text-color);
+}
+
+.navbar .nav .search-container .search-input:focus {
+    border: 1px solid var(--searchBorder-focus-color);
+}
+
+/* Override autocomplete styles */
+.navbar .nav .search-container .search-input:-webkit-autofill,
+.navbar .nav .search-container .search-input:-webkit-autofill:hover,
+.navbar .nav .search-container .search-input:-webkit-autofill:focus,
+.navbar .nav .search-container .search-input:autofill,
+.navbar .nav .search-container .search-input:autofill:hover,
+.navbar .nav .search-container .search-input:autofill:focus {
+    -webkit-text-fill-color: var(--main-text-color) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--bg-shades) inset !important;
+    box-shadow: 0 0 0px 1000px var(--bg-shades) inset !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+.navbar .nav .search-container .search-icon {
+    position: absolute;
+    display: flex;
+    left: 1.3rem;
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    color: var(--main-text-color);
+}
+
+.navbar .nav .search-container .search-icon svg {
+    color: inherit;
+    width: 1rem;
+    cursor: pointer;
+}
+
+.navbar .nav img {
+    width: 2.4rem;
+}
+
+.navbar .nav #dark-light-mode {
+    position: absolute;
+    right: 1.2rem;
+    justify-self: right;
+    cursor: pointer;
+}
+
+.navbar .nav #dark-light-mode:hover {
+    transform: scale(1.1);
+}
+
+/* =========== END OF NAVBAR========== */
+
+/* ============== STYLING THE MAIN DIV ============== */
+
+.main {
+    background: var(--main-bg-color);
+    /* height: 70vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 0 50px; */
+}
+
+.main .main-content {
+    color: var(--main-text-color);
+    /* background: #222; */
+    width: 95%;
+    height: 100%;
+}
+
+.main .main-content .category {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.main .main-content .category h2 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.main .main-content .category .movies {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    column-gap: 30px;
+}
+
+.main .main-content .category .movies::-webkit-scrollbar {
+    display: none;
+}
+
+
+.main .main-content .category .movies .movieSum {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background: green; */
+    /* margin: 0 30px; */
+}
+
+.main .main-content .category .movies .movieSum img {
+    max-width: none;
+    height: 13rem;
+    margin-bottom: 10px;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+.main .main-content .category .movies .movieSum p {
+    font-size: .9rem;
+}
+
+/* ----------END OF MAIN DIV---------- */
+
+/* -------------STYLING THE SEARCH DIV----------*/
+
+.search {
+    background: var(--main-bg-color);
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 0 50px; */
+}
+
+.search .search-content {
+    color: var(--main-text-color);
+    /* background: #222; */
+    width: 95%;
+    height: 100%;
+}
+
+.search .search-content .category {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.search .search-content .category h2 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.search .search-content .category h2 #searchToHomeBtn {
+    color: #3636b8;
+    cursor: pointer;
+}
+
+.search .search-content .category .movies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    /* overflow-x: auto;
+    overflow-y: hidden; */
+    column-gap: 40px;
+}
+
+.search .search-content .category .movies .movieSum {
+    width: 100%;
+    height: 100%;
+    flex: 0 0 8.5rem;
+    display: flex;
+    flex-direction: column;
+    /* background: green; */
+    margin-bottom: 1rem;
+}
+
+.search .search-content .category .movies .movieSum img {
+    max-width: none;
+    height: 14rem;
+    margin-bottom: 10px;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+.search .search-content .category .movies .movieSum p {
+    font-size: .9rem;
+}
+
+/* -------------END OF SEARCH DIV-------------------- */
+
+/* ---------------STYLING THE FOOTER-------------- */
+.footer {
+    background: #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer>* {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    color: #777;
+}
+
+.footer a {
+    color: #777;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.footer a:hover {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* -----------END OF FOOTER STYLING---------- */
+
+
+
+
+
+/* ---------STYLING THE LOADER------------- */
+.body {
+    display: none;
+}
+
+.search {
+    display: none;
+}
+
+.loader {
+    /* background: crimson; */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader .circle {
+    width: 100px;
+    height: 100px;
+    border-top: 10px solid palegoldenrod;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {}
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader p {
+    color: var(--main-text-color);
+    margin: 10px;
+}
+
+
+
+/* ---------MEDIA QUERIES--------- */
+/* For 1300px */
+@media screen and (max-width: 1300px) {
+
+    /* Main Div */
+    .main .main-content .category .movies .movieSum img {
+        height: 11rem;
+    }
+
+    /* Search Div */
+    .search .search-content .category .movies {
+        column-gap: 25px;
+    }
+
+    .search .search-content .category .movies .movieSum {
+        flex: 0 0 7.6rem;
+    }
+
+    .search .search-content .category .movies .movieSum img {
+        height: 11.1rem;
+    }
+}
+
+/* For 1100px */
+@media screen and (max-width: 1100px) {
+
+    /* Navigation pane */
+    .navbar .nav p {
+        font-size: 1.2rem;
+    }
+
+    .navbar .nav .search-container .search-input {
+        font-size: 1rem;
+    }
+
+    .navbar .nav img {
+        width: 2.4rem;
+    }
+
+    /* .main div */
+    .main .main-content .category h2 {
+        font-size: 1.2rem;
+    }
+
+    .main .main-content .category .movies {
+        column-gap: 20px;
+    }
+
+    .main .main-content .category .movies .movieSum img {
+        height: 9rem;
+    }
+
+    .main .main-content .category .movies .movieSum p {
+        font-size: .8rem;
+    }
+
+    /* .search div */
+    .search .search-content .category h2 {
+        font-size: 1.2rem;
+    }
+
+    .search .search-content .category .movies {
+        column-gap: 20px;
+    }
+
+    .search .search-content .category .movies .movieSum {
+        flex: 0 0 6.4rem;
+    }
+
+    .search .search-content .category .movies .movieSum img {
+        height: 9.6rem;
+    }
+
+    .search .search-content .category .movies .movieSum p {
+        font-size: .8rem;
+    }
+
+    /* footer */
+    .footer {
+        font-size: .8rem;
+    }
+}
+
+/* For 768px */
+@media screen and (max-width: 768px) {
+    .main .main-content .category .movies .movieSum img {
+        height: 8rem;
+    }
+
+    .search .search-content .category .movies .movieSum {
+        flex: 0 0 5.6rem;
+    }
+
+    .search .search-content .category .movies .movieSum img {
+        height: 8.4rem;
+    }
+}
+
+/* For 720px */
+@media screen and (max-width: 720px) {
+
+    /* Navigation pane */
+    .navbar .nav {
+        padding: .7rem;
+        justify-content: space-around;
+    }
+
+    .navbar .nav p {
+        font-size: 1.1rem;
+    }
+
+    .navbar .nav .search-container {
+        width: 100%;
+        max-width: unset;
+        margin: unset;
+    }
+
+    .navbar .nav .search-container .search-input {
+        font-size: .9rem;
+        padding: .5rem 1.7rem;
+    }
+
+    .navbar .nav .search-container .search-icon {
+        left: .4rem;
+    }
+
+    .navbar .nav .search-container .search-icon svg {
+        width: .9rem;
+    }
+
+    .navbar .nav img {
+        width: 1.8rem;
+    }
+
+    .navbar .nav #dark-light-mode {
+        position: unset;
+        justify-self: unset;
+        right: unset;
+    }
+
+    /* .main div */
+    .main .main-content {
+        width: 100%;
+    }
+
+    .main .main-content .category {
+        padding: .3rem 1rem;
+    }
+
+    .main .main-content .category h2 {
+        font-size: .95rem;
+        margin-bottom: .39rem;
+    }
+
+    .main .main-content .category .movies {
+        column-gap: 15px;
+    }
+
+    .main .main-content .category .movies .movieSum img {
+        height: 8rem;
+        margin-bottom: 4px;
+    }
+
+    /* .search div */
+    .search .search-content {
+        width: 100%;
+    }
+
+    .search .search-content .category {
+        padding: .3rem 1rem;
+    }
+
+    .search .search-content .category h2 {
+        font-size: .95rem;
+        margin-bottom: .39rem;
+    }
+
+    .search .search-content .category .movies {
+        column-gap: 10px;
+    }
+
+    .search .search-content .category .movies .movieSum {
+        flex: 0 0 5rem;
+    }
+
+    .search .search-content .category .movies .movieSum img {
+        height: 8.2rem;
+        margin-bottom: 4px;
+    }
+
+    /* footer */
+    .footer {
+        font-size: .9rem;
+        padding: 5px;
+    }
+
+    .footer>* {
+        margin: 10px 15px;
+    }
+}
+
+
+/* Media Query widths */
+/* 
+Mobile
+720px
+768
+
+PC X Big Tab
+1100px
+1300px
+1500px;
+*/
+
+/* TMDB
+https://www.themoviedb.org
+ "This product uses the TMDB API but is not endorsed or certified by TMDB."
+*/

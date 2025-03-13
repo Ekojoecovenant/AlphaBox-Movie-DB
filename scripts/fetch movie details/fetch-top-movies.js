@@ -1,4 +1,5 @@
-import { shuffleArray } from "../random.js";
+import { shuffleArray } from "../random-export.js";
+import { getContentTrailers } from "../details.js";
 
 const apiKey = "2d202e9510d7a1a79d7bc642da35995e";
 
@@ -8,18 +9,31 @@ async function fetchData(url) {
   return data.results; // TMDB API returns results in a 'results' array
 }
 
-async function displayContent(content, contentContainer) {
+function displayContent(content, contentContainer) {
   contentContainer.innerHTML = ""; // Add category heading
   for (const item of content) {
     contentContainer.innerHTML += `
           <div class=movieSum>
-            <img src="https://image.tmdb.org/t/p/w200${item.poster_path}" id="${
-      item.id
+            <img src="https://image.tmdb.org/t/p/w200${
+              item.poster_path
+            }" class="contentImg" data-my-id="${item.id}" data-my-type="${
+      item.media_type
     }" alt="${item.title || item.name}">
             <p>${item.title || item.name} (${
       item.media_type === "movie" ? "Movie" : "TV Show"
     })</p>
           </div>`;
+  }
+
+  const IMG = document.querySelectorAll(".contentImg");
+  for (const img of IMG) {
+    const id = img.getAttribute("data-my-id");
+    const type = img.getAttribute("data-my-type");
+
+    img.style.cursor = "pointer";
+    img.addEventListener("click", function () {
+      getContentTrailers(id, type);
+    });
   }
 }
 

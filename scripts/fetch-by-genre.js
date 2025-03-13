@@ -1,5 +1,6 @@
-import { shuffleArray } from "./random.js";
+import { shuffleArray } from "./random-export.js";
 import { filterImages } from "./filter-image.js";
+import { getContentTrailers } from "./details.js";
 
 const apiKey = "2d202e9510d7a1a79d7bc642da35995e";
 
@@ -14,13 +15,26 @@ async function displayContent(content, contentContainer) {
   for (const item of content) {
     contentContainer.innerHTML += `
           <div class='movieSum'>
-            <img src="https://image.tmdb.org/t/p/w200${item.poster_path}" id="${
-      item.id
+            <img src="https://image.tmdb.org/t/p/w200${
+              item.poster_path
+            }" class="contentImg" data-my-id="${item.id}" data-my-type="${
+      item.media_type
     }" alt="${item.title || item.name}">
             <p>${item.title || item.name} (${
       item.media_type === "movie" ? "Movie" : "TV Show"
     })</p>
           </div>`;
+  }
+
+  const IMG = document.querySelectorAll(".contentImg");
+  for (const img of IMG) {
+    const id = img.getAttribute("data-my-id");
+    const type = img.getAttribute("data-my-type");
+
+    img.style.cursor = "pointer";
+    img.addEventListener("click", function () {
+      getContentTrailers(id, type);
+    });
   }
 }
 
@@ -41,16 +55,13 @@ async function fetchGenreContent(genreId, contentContainer) {
   }));
   const tvShowsWithType = tvShows.map((tv) => ({ ...tv, media_type: "tv" }));
 
-  // Combine movies and TV shows into a single array
+  // to combine movies and TV shows to an array
   const combinedContent = [...moviesWithType, ...tvShowsWithType];
 
-  // Shuffle the combined array to mix movies and TV shows
   const shuffledContent = shuffleArray(combinedContent);
 
-  // Filter the array to remove content with broken images
   const filteredContent = filterImages(shuffledContent);
 
-  // Display the combined content
   await displayContent(filteredContent.slice(0, 20), contentContainer); // Display top 8 results
 }
 
@@ -69,20 +80,17 @@ async function fetchGenreContent2(genreId, contentContainer, language) {
   }));
   const tvShowsWithType = tvShows.map((tv) => ({ ...tv, media_type: "tv" }));
 
-  // Combine movies and TV shows into a single array
   const combinedContent = [...moviesWithType, ...tvShowsWithType];
 
-  // Shuffle the combined array to mix movies and TV shows
   const shuffledContent = shuffleArray(combinedContent);
 
-  // Filter the array to remove content with broken images
   const filteredContent = filterImages(shuffledContent);
 
   // Display the combined content
   await displayContent(filteredContent.slice(0, 20), contentContainer); // Display top 8 results
 }
 
-async function fetchGenreContent3(movieId, tvId, contentContainer) {
+/* async function fetchGenreContent3(movieId, tvId, contentContainer) {
   // Fetch movies of the specified genre
   const movies = await fetchData(
     `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${movieId}&sort_by=vote_average.desc`
@@ -110,12 +118,11 @@ async function fetchGenreContent3(movieId, tvId, contentContainer) {
 
   // Display the combined content
   await displayContent(filteredContent.slice(0, 20), contentContainer); // Display top 8 results
-}
-
+} */
 export {
   fetchGenreContent,
   fetchGenreContent2,
-  fetchGenreContent3,
+  // fetchGenreContent3,
   displayContent,
   fetchData,
 };

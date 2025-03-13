@@ -773,7 +773,7 @@
         <main class="search">
             <div class="search-content">
                 <section class="category">
-                    <h2><span id="searchToHomeBtn">Home</span> > Search Result for <span id="searched"></span>
+                    <h2><span id="backHomeBtn">Home</span> > Search Result for <span id="searched"></span>
                     </h2>
                     <div class="movies" id="searchDiv">
                         <div class="movieSum">
@@ -901,6 +901,128 @@
             </div>
         </main>
 
+        <main class="details">
+            <div class="details-content">
+                <h2>
+                    <span id="backHomeBtn" onclick="goBackHome()">Home</span> > "<span id="details-title"></span>"
+                </h2>
+                <div class="trailer">
+                    <iframe src=""
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen frameborder="0">
+                    </iframe>
+                </div>
+                <div class="trailer-info">
+                    <div class="trailer-primary-info">
+                        <div class="trailer-primary-info-left">
+                            <p id="trailer-title" class="heavy">Title</p>
+                            <p id="trailer-date">Date</p>
+                        </div>
+                        <div class="trailer-primary-info-right">
+                            <p id="trailer-rating" class="heavy">Rating</p>
+                        </div>
+                    </div>
+                    <div class="trailer-secondary-info">
+                        <p id="trailer-overview">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ullam alias
+                            consequatur quia ipsum obcaecati fugiat quis consectetur ad inventore.
+                        </p>
+                        <p id="trailer-genre" class="heavy"><small>Genre1 || Genre2</small></p>
+                    </div>
+                </div>
+                <div class="trailer-starring">
+                    <h2>Starring :</h2>
+                    <div class="starring movies">
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                        <div class="cast">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Real Name AS Character Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trailer-recommendations">
+                    <h2>Recommedations</h2>
+                    <div class="recommendations movies">
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                        <div class="movieSum">
+                            <img src="./media/Images/noImage.jpg" alt="">
+                            <p>Movie / TV Show Name</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
         <footer class="footer">
             <!-- Andriod icon -->
             <!--<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
@@ -940,17 +1062,19 @@
     <script type="module" src="./scripts/fetch-movie.js"></script>
     <script type="module" src="./scripts/search.js"></script>
     <script>
-
         // To make the main body to display
         function original() {
             document.querySelector(".loader").style.display = "none";
             document.querySelector(".body").style.display = "unset";
-            // document.querySelector('#search').style.display = 'unset'
+            document.querySelector('.search').style.display = "none"
+            document.querySelector('.details').style.display = "none"
         }
+
         setTimeout(original, 4000);
-        // setTimeout(original, 500);
+        // setTimeout(original, 10);
     </script>
     <script src="./scripts/dark-light-mode.js"></script>
+    <!-- <script src="./scripts/details.js"></script> -->
     <script src="./scripts/back.js"></script>
 
 

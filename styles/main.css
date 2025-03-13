@@ -1,3 +1,8 @@
+@font-face {
+    font-family: font1;
+    src: url('../media/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
 :root {
     --main-bg-color: #111;
     --bg-shades: #444;
@@ -5,14 +10,14 @@
     --searchBorder-focus-color: white;
     --searchBorder-color: #777;
     --title-color: white;
-
+    --details-shade: #222;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
+    font-family: font1, "Montserrat", sans-serif;
     border: none;
     outline: none;
     text-decoration: none;
@@ -228,9 +233,9 @@ body {
     font-size: 1.3rem;
 }
 
-.search .search-content .category h2 #searchToHomeBtn {
-    color: #3636b8;
-    cursor: pointer;
+#backHomeBtn {
+    color: #3636b8 !important;
+    cursor: pointer !important;
 }
 
 .search .search-content .category .movies {
@@ -266,9 +271,175 @@ body {
     font-size: .9rem;
 }
 
-/* -------------END OF SEARCH DIV-------------------- */
+/* ------------- END OF SEARCH DIV ------------ */
 
-/* ---------------STYLING THE FOOTER-------------- */
+/* ---------------- DETAILS DIV --------------- */
+
+.details {
+    background: var(--main-bg-color);
+    /* min-height: 70vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.details .details-content {
+    color: var(--main-text-color);
+    background: var(--details-shade);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    max-width: 85%;
+    height: 100%;
+    padding: .3rem .5rem;
+    border-radius: 20px;
+}
+
+.details .details-content h2 {
+    width: 100%;
+    max-width: 1100px;
+    padding: 15px;
+    padding-bottom: 0;
+    /* font-size: 1.3rem; */
+}
+
+.details .details-content .trailer {
+    width: 100%;
+    max-width: 1100px;
+    aspect-ratio: 16 / 9;
+    /* margin: 10px; */
+}
+
+.details .details-content .trailer iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+.details .details-content .trailer-info {
+    /* background-color: #444; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 10px;
+
+}
+
+.details .details-content .trailer-info>div {
+    width: 100%;
+    /* background-color: #222; */
+    border-radius: 10px;
+    margin: 2px 0;
+    /* padding: 5px 20px; */
+}
+
+.details .details-content .trailer-info .trailer-primary-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details .details-content .trailer-info .trailer-primary-info>div {
+    display: flex;
+    flex-direction: column;
+    /* background: green; */
+    justify-content: center;
+    padding: 5px 10px;
+    /* height: 4rem; */
+}
+
+.details .details-content .trailer-info .trailer-secondary-info>p {
+
+    padding: 5px 10px;
+}
+
+.details .details-content .trailer-info .trailer-primary-info p,
+.details .details-content .trailer-info .trailer-secondary-info p {
+    margin: 5px 0;
+}
+
+.details .details-content .trailer-info .heavy {
+    font-weight: 800;
+}
+
+.details .details-content .trailer-info .trailer-primary-info .trailer-primary-info-right {
+    min-width: 20%;
+    border-left: 1px solid var(--main-text-color);
+    display: flex;
+    align-items: center;
+}
+
+.details .details-content>div {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.details .details-content h2 {
+    margin-bottom: .2rem;
+    font-size: 1.3rem;
+}
+
+.details .details-content>div .movies {
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+
+.details .details-content .trailer-starring .movies {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 30px;
+
+}
+
+.details .details-content .trailer-recommendations .movies {
+
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+    align-items: flex-start;
+}
+
+.details .details-content>div .movies>div {
+    /* width: 100%; */
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+}
+
+.details .details-content .trailer-recommendations .movies .movieSum {
+    flex: 0 0 8.5rem;
+    margin-bottom: 1rem;
+    aspect-ratio: 9 / 16;
+}
+
+
+.details .details-content>div .movies>div img {
+    max-width: none;
+    height: 13rem;
+    margin-bottom: 10px;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+.details .details-content>div .movies>div p {
+    font-size: .9rem;
+}
+
+
+
+
+/* ------------ END OF DETAILS DIV ------------ */
+
+/* ------------ STYLING THE FOOTER ------------ */
 .footer {
     background: #222;
     display: flex;
@@ -422,6 +593,29 @@ body {
         font-size: .8rem;
     }
 
+    /* .details div */
+    .details .details-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .details .details-content div .movies {
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+
+    .details .details-content .trailer-recommendations .movies .movieSum {
+        flex: 0 0 6.1rem;
+        /* aspect-ratio: 9 / 16; */
+    }
+
+    .details .details-content div .movies div img {
+        height: 10rem;
+    }
+
+    .details .details-content div .movies .movieSum p {
+        font-size: .8rem;
+    }
+
     /* footer */
     .footer {
         font-size: .8rem;
@@ -439,6 +633,14 @@ body {
     }
 
     .search .search-content .category .movies .movieSum img {
+        height: 8.4rem;
+    }
+
+    .details .details-content .trailer-recommendations .movies .movieSum {
+        flex: 0 0 4.7rem;
+    }
+
+    .details .details-content div .movies div img {
         height: 8.4rem;
     }
 }
@@ -531,6 +733,33 @@ body {
     }
 
     .search .search-content .category .movies .movieSum img {
+        height: 8.2rem;
+        margin-bottom: 4px;
+    }
+
+    /* .details div */
+    .details .details-content {
+        width: 100%;
+    }
+
+    .details .details-content>div {
+        padding: .3rem 1rem;
+    }
+
+    .details .details-content h2 {
+        font-size: .95rem;
+        margin-bottom: .39rem;
+    }
+
+    .details .details-content div .movies {
+        column-gap: 10px;
+    }
+
+    .details .details-content .trailer-recommendations .movies .movieSum {
+        flex: 0 0 4.6rem;
+    }
+
+    .details .details-content div .movies div img {
         height: 8.2rem;
         margin-bottom: 4px;
     }
